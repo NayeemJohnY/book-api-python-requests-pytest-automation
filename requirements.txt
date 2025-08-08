@@ -1,0 +1,7 @@
+pytest
+requests
+pytest-dependency
+pytest-xdist
+pytest-html
+pylint
+bandit
