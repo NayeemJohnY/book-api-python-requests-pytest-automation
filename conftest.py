@@ -25,4 +25,5 @@ def pytest_sessionfinish(session, exitstatus):
     client = APIClient(BASE_URI, BASE_PATH)
     res = client.delete(client.build_url("/reset"),
                         headers={"authorization": "Bearer admin-token"})
+    # nosec
     assert res.status_code == 204, f"Reset failed: {res.status_code} {res.text}"
