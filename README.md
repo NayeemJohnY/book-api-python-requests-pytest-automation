@@ -5,14 +5,28 @@ A robust, maintainable, and DRY API test automation framework for a Book API usi
 [![Code Analysis](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/code_analysis.yml/badge.svg)](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/code_analysis.yml) [![Test Execution](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/test-execution.yml/badge.svg)](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/test-execution.yml)
 
 ## Features
-- **Custom APIClient**: Centralized HTTP client with built-in retry, logging, and URL building.
-- **Reusable Validators**: Assertion helpers for status codes, error messages, and response validation.
-- **Pytest Fixtures**: Clean setup/teardown, session/module/class-scoped fixtures.
-- **Parameterization**: Test edge cases and error scenarios efficiently.
-- **Parallel Test Execution**: Supports pytest-xdist for parallel test runs by file/module.
-- **Comprehensive Logging**: Logs all requests, responses, assertions, and retry attempts.
-- **Test Reports**: Generates HTML reports with pytest-html.
-- **Dependency Management**: Handles test dependencies with pytest-dependency.
+ - **Custom APIClient**: Centralized HTTP client (`helpers/api_client.py`) with:
+     - Built-in retry logic for transient errors (HTTP 429, 5xx) using urllib3's `Retry`.
+     - Logging of all requests, responses, and retry attempts (INFO/DEBUG level).
+     - Automatic use of `Retry-After` header for backoff.
+     - URL building and session management.
+ - **Reusable Validators**: Assertion helpers (`helpers/validator.py`) for:
+     - Status code validation with logging on pass/fail.
+     - Error message and book response validation.
+     - All assertions log both pass and fail for traceability.
+ - **Pytest Fixtures**: Clean setup/teardown in `conftest.py` and `BaseTest.py`:
+     - Session/module/class-scoped fixtures for API client and test data.
+     - DRY test setup using base classes and autouse fixtures.
+ - **Parameterization**: Use of `@pytest.mark.parametrize` for edge cases and error scenarios.
+ - **Parallel Test Execution**: Supports pytest-xdist for parallel test runs by file/module:
+     - `dist=loadfile` ensures all tests in a file run sequentially, files run in parallel.
+     - Test data is made unique per worker to avoid collisions.
+ - **Comprehensive Logging**:
+     - All requests, responses, assertions, and retries are logged.
+     - Logging configuration in `pytest.ini` supports both CLI and file output.
+     - DEBUG/INFO logs available in log file; INFO logs in CLI (with xdist, some logs may only appear in file).
+ - **Test Reports**: Generates HTML reports with pytest-html for easy review.
+ - **Dependency Management**: Handles test dependencies and ordering with pytest-dependency.
 
 ## Project Structure
 ```
