@@ -1,10 +1,13 @@
 """Base Test Module"""
+
 import pytest
+
 from helpers.api_client import APIClient
 
 
 class BaseTest:
     """Base Test Class"""
+
     client: APIClient
 
     @pytest.fixture(scope="class", autouse=True)

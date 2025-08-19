@@ -5,3 +5,4 @@ pytest-xdist
 pytest-html
 pylint
 bandit
+allure-pytest

@@ -1,9 +1,11 @@
 """API Client Utility"""
+
 import logging
 from urllib.parse import urljoin
-from urllib3.util.retry import Retry
+
 import requests
 from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +33,7 @@ class LoggingRetry(Retry):
                 last.status,
                 last.error,
                 len(new_retry.history),
-                self.total
+                self.total,
             )
         return new_retry
 
@@ -44,12 +46,19 @@ class APIClient(requests.Session):
         self.base_url = base_url.rstrip("/") + "/"
         self.base_path = base_path.rstrip("/") + "/" if base_path else ""
         self.headers.update(headers or {})
-        self.hooks['response'].append(self.log_response)
+        self.hooks["response"].append(self.log_response)
         retries = LoggingRetry(
             total=3,
             status_forcelist=[429, 500, 502, 503, 504],
-            allowed_methods=["HEAD", "GET", "OPTIONS",
-                             "POST", "PUT", "DELETE", "PATCH"]
+            allowed_methods=[
+                "HEAD",
+                "GET",
+                "OPTIONS",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+            ],
         )
         adapter = HTTPAdapter(max_retries=retries)
         self.mount("https://", adapter)
@@ -58,15 +67,19 @@ class APIClient(requests.Session):
     def build_url(self, endpoint: str = None) -> str:
         """Build a full URL for the given endpoint."""
         endpoint = endpoint.lstrip("/") if endpoint else ""
-        fullpath = f'{self.base_path}{endpoint}'
+        fullpath = f"{self.base_path}{endpoint}"
         return urljoin(self.base_url, fullpath)
 
     def log_response(self, response: requests.Response, *args, **kwargs):
         """Log details of the request and response."""
         logger.debug("Request Headers: %s", response.request.headers)
         logger.debug("Request Body: %s", response.request.body)
-        logger.info("%s : %s -> %s", response.request.method,
-                    response.request.url, response.status_code)
+        logger.info(
+            "%s : %s -> %s",
+            response.request.method,
+            response.request.url,
+            response.status_code,
+        )
         logger.debug("Response Headers: %s", response.headers)
         logger.debug("Response Body: %s", response.text)
         return response
