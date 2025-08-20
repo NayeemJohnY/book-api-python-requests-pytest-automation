@@ -1,8 +1,10 @@
 """Delete Book Test Module"""
+
 import allure
 import pytest
 from helpers import validator
 from tests.base_test import BaseTest
+
 
 @allure.epic("Book Management")
 @allure.feature("Delete Book")

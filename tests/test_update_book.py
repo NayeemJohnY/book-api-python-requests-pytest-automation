@@ -5,6 +5,7 @@ import allure
 from helpers import validator
 from tests.base_test import BaseTest
 
+
 @allure.epic("Book Management")
 @allure.feature("Update Book")
 @allure.severity(allure.severity_level.NORMAL)
