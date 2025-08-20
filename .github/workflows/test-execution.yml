@@ -70,7 +70,7 @@ jobs:
           fi
 
           if [ "${{ inputs.test_group }}" != "" ]; then
-            EXTRA_PARAMS+=' -m "${{ inputs.test_group }}"';
+            EXTRA_PARAMS+=' -m ${{ inputs.test_group }}';
           fi
 
           echo "Running with: pytest ${EXTRA_PARAMS}"
