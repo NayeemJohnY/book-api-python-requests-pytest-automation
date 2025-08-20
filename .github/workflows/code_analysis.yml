@@ -2,6 +2,10 @@ name: Code Analysis
 
 on:
   push:
+    branches:
+      - main
+    paths:
+      - *.py
   workflow_dispatch:
 
 jobs:
