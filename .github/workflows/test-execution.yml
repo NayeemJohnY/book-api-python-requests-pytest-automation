@@ -66,11 +66,11 @@ jobs:
           fi
 
           if [ "${{ inputs.test_name }}" != "" ]; then
-            EXTRA_PARAMS+=' -k ${{ inputs.test_name }}';
+            EXTRA_PARAMS+=' -k "${{ inputs.test_name }}"';
           fi
 
           if [ "${{ inputs.test_group }}" != "" ]; then
-            EXTRA_PARAMS+=' -m ${{ inputs.test_group }}';
+            EXTRA_PARAMS+=' -m "${{ inputs.test_group }}"';
           fi
 
           echo "Running with: pytest ${EXTRA_PARAMS}"
