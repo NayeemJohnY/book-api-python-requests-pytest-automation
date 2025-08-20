@@ -13,7 +13,7 @@ on:
         type: string
 
       test_group:
-        description: Test Group (e.g., smoke,regression or smoke)
+        description: Test Group (e.g., (smoke or regression) or not smoke)
         required: false
         type: string
 
