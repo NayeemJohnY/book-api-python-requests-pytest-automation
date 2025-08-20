@@ -4,7 +4,7 @@ A robust, maintainable, and DRY API test automation framework for a Book API usi
 
 [![Code Analysis](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/code_analysis.yml/badge.svg)](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/code_analysis.yml) [![Test Execution](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/test-execution.yml/badge.svg)](https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation/actions/workflows/test-execution.yml)
 
-[GitHub Page with Allure report](https://nayeemjohny.github.io/book-api-python-requests-pytest-automation)
+:link: [GitHub Page with Allure report](https://nayeemjohny.github.io/book-api-python-requests-pytest-automation)
 
 ## Features
  - **Custom APIClient**: Centralized HTTP client (`helpers/api_client.py`) with:
