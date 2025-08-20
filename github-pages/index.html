@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Book API Testing Framework</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta property="og:title" content="Book API Testing Framework">
+    <meta property="og:description" content="Comprehensive API Testing Framework for Book system with Python, pytest, and requests.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation" class="github-corner" target="_blank" title="View on GitHub">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Repository">
+    </a>
+    
+    <div class="main-container">
+        <header>
+            <h1><i class="fas fa-book"></i> Book API Testing Framework</h1>
+            <p class="subtitle">A robust, maintainable API test automation framework built with Python, pytest, and requests</p>
+        </header>
+        
+        <nav class="quick-links">
+            <a href="./allure-report/index.html" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                View Allure Report
+            </a>
+        </nav>
+        
+        <div class="content-grid">
+            <div class="card">
+                <h2><i class="fas fa-star"></i> Key Features</h2>
+                <ul>
+                    <li><strong>Custom APIClient</strong> with built-in retry logic and comprehensive logging</li>
+                    <li><strong>Reusable Validators</strong> for status codes, error messages, and response validation</li>
+                    <li><strong>DRY Architecture</strong> using pytest fixtures and base classes</li>
+                    <li><strong>Parallel Execution</strong> with pytest-xdist and worker-safe test data</li>
+                    <li><strong>Rich Reporting</strong> with HTML and Allure integration</li>
+                    <li><strong>Comprehensive Logging</strong> for all requests, responses, and assertions</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-rocket"></i> Quick Start</h2>
+                <ol>
+                    <li>Install dependencies:<br><code>pip install -r requirements.txt</code></li>
+                    <li>Start your Book API server:<br><code>http://localhost:3000</code></li>
+                    <li>Run all tests:<br><code>pytest</code></li>
+                    <li>Run tests in parallel:<br><code>pytest -n auto --dist loadfile</code></li>
+                    <li>Generate Allure report:<br><code>allure serve test-results/allure-results</code></li>
+                </ol>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-cogs"></i> Best Practices</h2>
+                <ul>
+                    <li><strong>Parameterization:</strong> Use <code>@pytest.mark.parametrize</code> for edge cases</li>
+                    <li><strong>Traceability:</strong> All requests and assertions are logged with detailed info</li>
+                    <li><strong>Dependencies:</strong> Test ordering managed with <code>pytest-dependency</code></li>
+                    <li><strong>Retry Logic:</strong> Built-in handling for transient HTTP errors (429, 5xx)</li>
+                    <li><strong>Parallel Safety:</strong> Unique test data per worker prevents collisions</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-tools"></i> Tech Stack</h2>
+                <ul>
+                    <li><strong>Python 3.8+</strong> - Modern Python features</li>
+                    <li><strong>pytest</strong> - Advanced testing framework</li>
+                    <li><strong>requests</strong> - HTTP library with session management</li>
+                    <li><strong>urllib3</strong> - Retry logic and connection pooling</li>
+                    <li><strong>allure-pytest</strong> - Rich test reporting</li>
+                    <li><strong>pytest-xdist</strong> - Parallel test execution</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div>
+                <a href="https://www.linkedin.com/in/nayeemjohny/" target="_blank" class="linkedin-link">
+                    <i class="fa-brands fa-linkedin"></i>Connect with me on LinkedIn
+                </a>
+            </div>
+            <div class="copilot-credit">
+                <i class="fa-solid fa-robot"></i>
+                Thanks to <span class="copilot-highlight">GitHub Copilot</span> for assisting with documentation
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
