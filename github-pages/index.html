@@ -54,6 +54,7 @@
                     <li>Start your Book API server:<br><code>http://localhost:3000</code></li>
                     <li>Run all tests:<br><code>pytest</code></li>
                     <li>Run tests in parallel:<br><code>pytest -n auto --dist loadfile</code></li>
+                    <li>Run smoke tests quickly:<br><code>pytest -m smoke -n auto --dist loadfile</code></li>
                     <li>Generate Allure report:<br><code>allure serve test-results/allure-results</code></li>
                     <li>To generate a static Allure HTML report:<br><code>allure generate test-results/allure-results --clean -o test-results/allure-report</code></li>
                 </ol>
@@ -80,6 +81,23 @@
                     <li><strong>allure-pytest</strong> - Rich test reporting</li>
                     <li><strong>pytest-xdist</strong> - Parallel test execution</li>
                 </ul>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-tags"></i> Pytest Markers</h2>
+                <ul>
+                    <li><strong>smoke</strong>: Quick smoke tests for core functionality</li>
+                    <li><strong>regression</strong>: Comprehensive regression tests for business logic</li>
+                    <li><strong>negative</strong>: Error handling and negative scenario tests</li>
+                </ul>
+                <p><strong>Run specific test types:</strong></p>
+                <code>pytest -m regression</code><br>
+                <p><strong>Combine markers for flexible execution:</strong></p>
+                <code>pytest -m "smoke or regression"</code><br>
+                <code>pytest -m "regression and not negative"</code><br>
+                <p><strong>Parallel execution with markers:</strong></p>
+                <code>pytest -m smoke -n auto --dist loadfile</code><br>
+            </div>
             </div>
         </div>
         

@@ -45,6 +45,8 @@ class TestUpdateBook(BaseTest):
             validator.validate_error_message(response, expected_message)
         return response
 
+    @pytest.mark.smoke
+    @pytest.mark.regression
     @pytest.mark.parametrize(
         "field,value",
         [
@@ -63,6 +65,8 @@ class TestUpdateBook(BaseTest):
             response_book[field], value, f"PUT API Response Book {field} should match"
         )
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @allure.title("Should return 401 when no auth is provided on update book")
     def test_should_return_401_when_no_auth_is_provided_on_update_book(self):
         """Test updating a book without authentication returns 401."""
@@ -73,6 +77,8 @@ class TestUpdateBook(BaseTest):
         validator.validate_status_code(response, 401)
         validator.validate_error_message(response, "Unauthorized. No token provided.")
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @allure.title("Should return 404 when book with ID does not exist")
     def test_should_return_404_when_book_with_id_is_not_exists(self):
         """Test updating a non-existent book returns 404."""
@@ -83,6 +89,8 @@ class TestUpdateBook(BaseTest):
             book_id="12345678",
         )
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @allure.title("Should return 400 when different book ID is given in body")
     def test_should_return_400_when_different_book_id_is_given_in_body(self):
         """Test updating a book with a mismatched ID in the body returns 400."""
@@ -92,6 +100,7 @@ class TestUpdateBook(BaseTest):
             expected_message="Updating book ID is not allowed.",
         )
 
+    @pytest.mark.regression
     @allure.title("Should update book when same book ID is given in body")
     def test_should_update_book_when_same_book_id_is_given_in_body(self):
         """Test updating a book when the same book ID is provided in the body."""

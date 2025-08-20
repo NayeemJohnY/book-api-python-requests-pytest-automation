@@ -50,6 +50,8 @@ class TestGetBook(BaseTest):
             validator.validate_status_code(response, 201)
             validator.validate_response_book(response, book)
 
+    @pytest.mark.smoke
+    @pytest.mark.regression
     @allure.title("Should return books for default page 1")
     def test_should_return_books_for_default_page1(self):
         """Test Should return Book For Default page 1"""
@@ -59,6 +61,7 @@ class TestGetBook(BaseTest):
             len(response.json()) >= 10, "Number Of Books should greater or equal to 10"
         )
 
+    @pytest.mark.regression
     @allure.title("Should return books by page number")
     def test_should_return_books_by_page_number(self):
         """Test Should return book by page number"""
@@ -69,6 +72,7 @@ class TestGetBook(BaseTest):
             "Page 2 Book ids should greater than 10",
         )
 
+    @pytest.mark.regression
     @pytest.mark.parametrize(
         "params,expected_count,message",
         [
@@ -85,6 +89,8 @@ class TestGetBook(BaseTest):
         validator.validate_status_code(response, 200)
         validator.assert_true(len(response.json()) == expected_count, message)
 
+    @pytest.mark.regression
+    @pytest.mark.negative
     @allure.title("Should return books excluding last limit on negative limit")
     def test_should_return_books_excluding_last_limit_on_negative_limit(self):
         """Test Should return book exlcuding last limit on negative limit"""
@@ -94,6 +100,8 @@ class TestGetBook(BaseTest):
             len(response.json()) != 0, "Books size with negative limt should be 0"
         )
 
+    @pytest.mark.smoke
+    @pytest.mark.regression
     @allure.title("Should return single book by ID")
     def test_should_return_single_book_by_id(self):
         """Test Should return Single Book by ID"""
@@ -101,6 +109,8 @@ class TestGetBook(BaseTest):
         validator.validate_status_code(response, 200)
         validator.assert_equals(response.json()["id"], 10, "Retrieve Book by book ID")
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @allure.title("Should not return book when book ID is invalid string")
     def test_should_not_return_book_when_book_id_is_invalid_string(self):
         """Test should not return book when Book Id is invalid String"""
@@ -108,6 +118,8 @@ class TestGetBook(BaseTest):
         validator.validate_status_code(response, 404)
         validator.validate_error_message(response, "Book not found")
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @allure.title("Should not return book when book ID does not exist")
     def test_should_not_return_book_when_book_id_not_exists(self):
         """Test Should not return book when book id not exists"""
@@ -115,6 +127,7 @@ class TestGetBook(BaseTest):
         validator.validate_status_code(response, 404)
         validator.validate_error_message(response, "Book not found")
 
+    @pytest.mark.regression
     @allure.title("Should return all books when book ID is empty")
     def test_should_return_all_books_when_book_id_is_empty(self):
         """Test should return all books when book id is empty"""
@@ -124,6 +137,7 @@ class TestGetBook(BaseTest):
             len(response.json()) >= 10, "Number Of Books should greater or equal to 10"
         )
 
+    @pytest.mark.regression
     @allure.title("Should return books containing author")
     def test_should_return_books_contains_author(self):
         """Test should return book contains author"""
@@ -133,6 +147,7 @@ class TestGetBook(BaseTest):
         )
         self.assert_search_results(response, author="Book Author")
 
+    @pytest.mark.regression
     @allure.title("Should return books containing title")
     def test_should_return_books_contains_title(self):
         """Test should return book contains title"""
@@ -141,6 +156,7 @@ class TestGetBook(BaseTest):
         )
         self.assert_search_results(response, title="Book Title")
 
+    @pytest.mark.regression
     @allure.title("Should return books containing title and author")
     def test_should_return_books_contains_title_and_author(self):
         """Test should return book contains title and author"""
@@ -150,6 +166,7 @@ class TestGetBook(BaseTest):
         )
         self.assert_search_results(response, title="Book Title", author="book author")
 
+    @pytest.mark.regression
     @allure.title("Should return single book with title and author")
     def test_should_return_single_book_with_title_and_author(self):
         """Test should return single book for author and title"""
@@ -161,6 +178,8 @@ class TestGetBook(BaseTest):
             response, title="Book Title 7", author="book author 7"
         )
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @pytest.mark.parametrize(
         "params,status_code,expected_message",
         [

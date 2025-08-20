@@ -7,6 +7,17 @@ on:
         description: Run Tests in Parallel
         default: false
 
+      test_name:
+        description: Test File / Test Class / Test function Name
+        required: false
+        type: string
+
+      test_group:
+        description: Test Group (e.g., smoke,regression or smoke)
+        required: false
+        type: string
+
+
 permissions:
   id-token: write
   contents: read
@@ -47,11 +58,22 @@ jobs:
 
       - name: Execute Test
         run: |
-          if [ "${{ github.event.inputs.parallel }}" = "true" ]; then
-            pytest -n 5 --dist loadfile
-          else
-            pytest
-          fi 
+          EXTRA_PARAMS=""
+      
+          if ${{ inputs.parallel }} ; then
+            EXTRA_PARAMS+=" -n 5 --dist loadfile";
+          fi
+
+          if [ "${{ inputs.test_name }}" != "" ]; then
+            EXTRA_PARAMS+=' -k ${{ inputs.test_name }}';
+          fi
+
+          if [ "${{ inputs.test_group }}" != "" ]; then
+            EXTRA_PARAMS+=' -m ${{ inputs.test_group }}';
+          fi
+
+          echo "Running with: pytest ${EXTRA_PARAMS}"
+          pytest ${EXTRA_PARAMS}
 
       - name: Stop Book NodeJS App
         if: always()

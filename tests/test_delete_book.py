@@ -30,6 +30,8 @@ class TestDeleteBook(BaseTest):
         validator.validate_response_book(response, book)
         self.__class__.book_id = response.json()["id"]
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @allure.title("Should return 401 when no auth token provided on delete")
     def test_should_return_401_when_no_auth_token_provided_on_delete(self):
         """Test deleting a book without authentication returns 401."""
@@ -37,6 +39,8 @@ class TestDeleteBook(BaseTest):
         validator.validate_status_code(response, 401)
         validator.validate_error_message(response, "Unauthorized. No token provided.")
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @allure.title("Should return 403 when user auth token is provided on delete")
     def test_should_return_403_when_user_auth_token_is_provided_on_delete(self):
         """Test deleting a book with a user token returns 403."""
@@ -46,6 +50,8 @@ class TestDeleteBook(BaseTest):
         validator.validate_status_code(response, 403)
         validator.validate_error_message(response, "Forbidden. Admin access required.")
 
+    @pytest.mark.smoke
+    @pytest.mark.regression
     @pytest.mark.dependency(name="delete_valid_book")
     @allure.title("Should delete book when book ID is valid")
     def test_should_delete_book_when_book_id_is_valid(self):
@@ -55,6 +61,8 @@ class TestDeleteBook(BaseTest):
         )
         validator.validate_status_code(response, 204)
 
+    @pytest.mark.negative
+    @pytest.mark.regression
     @pytest.mark.dependency(depends=["delete_valid_book"])
     @allure.title("Should return 404 when book is already deleted or does not exist")
     def test_should_return_404_when_book_is_already_deleted_or_not_exists(self):

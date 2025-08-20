@@ -111,6 +111,74 @@ class TestCreateBook(BaseTest):
         validator.validate_response_book(response, book)
 ```
 
+## Parallel Test Execution
+
+This framework supports parallel test execution using pytest-xdist for faster test runs:
+
+### Basic Parallel Execution
+```bash
+# Run tests in parallel with verbose output
+pytest -n auto --dist loadfile -v
+```
+
+### Parallel Execution Modes
+- **`--dist loadfile`**: All tests in a file run sequentially, files run in parallel (recommended)
+- **`--dist loadscope`**: Tests grouped by scope (class/module) run together
+- **`--dist worksteal`**: Dynamic work distribution (fastest but less predictable)
+
+### Parallel Safety Features
+- **Unique Test Data**: Test data is made unique per worker to avoid collisions
+- **Worker-Safe Fixtures**: API client and test setup fixtures are worker-safe
+- **Isolated Test Runs**: Each worker operates independently with separate test data
+
+
+## Pytest Markers
+
+This project uses pytest markers to organize and categorize tests for flexible execution:
+
+### Available Markers
+- **smoke**: Quick smoke tests for core functionality
+- **regression**: Comprehensive regression tests for business logic
+- **negative**: Error handling and negative scenario tests
+
+### Usage Examples
+
+Run only regression tests:
+```bash
+pytest -m regression
+```
+
+Run both smoke and regression tests:
+```bash
+pytest -m "smoke or regression"
+```
+Run regression tests but exclude negative scenarios:
+```bash
+pytest -m "regression and not negative"
+```
+Run smoke tests in parallel:
+```bash
+pytest -m smoke -n auto --dist loadfile
+```
+
+
+### Marker Usage in Tests
+Each test function is decorated with appropriate markers:
+```python
+@pytest.mark.smoke
+@pytest.mark.regression
+@allure.title("Should create book successfully")
+def test_should_create_book_successfully(self):
+    # Test implementation
+```
+
+### Test Organization by Marker
+- **Smoke Tests**: Core functionality validation (create, get, update, delete basic scenarios)
+- **Regression Tests**: Complex business scenarios, pagination, search functionality, edge cases
+- **Negative Tests**: Error handling, invalid authentication, resource not found scenarios
+
+This marker system enables flexible test execution strategies, from quick smoke tests during development to comprehensive regression testing in CI/CD pipelines.
+
 ## Troubleshooting
 - **Connection errors**: Ensure the Book API server is running at the correct URL.
 - **Parallel test issues**: Make sure test data is unique per worker or run tests serially.
