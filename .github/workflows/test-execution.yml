@@ -66,7 +66,7 @@ jobs:
           fi
 
           if [ "${{ inputs.test_name }}" != "" ]; then
-            EXTRA_PARAMS+=' -k "${{ inputs.test_name }}"';
+            EXTRA_PARAMS+=' -k ${{ inputs.test_name }}';
           fi
 
           if [ "${{ inputs.test_group }}" != "" ]; then
