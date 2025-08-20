@@ -62,7 +62,7 @@ jobs:
           EXTRA_PARAMS=""
       
           if ${{ inputs.parallel }} ; then
-            EXTRA_PARAMS+=" -n 5 --dist loadfile";
+            EXTRA_PARAMS+=" -n auto --dist loadfile";
           fi
 
           if [ "${{ inputs.test_name }}" != "" ]; then
