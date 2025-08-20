@@ -57,6 +57,7 @@ jobs:
           sleep 20
 
       - name: Execute Test
+        shell: bash
         run: |
           EXTRA_PARAMS=""
       
