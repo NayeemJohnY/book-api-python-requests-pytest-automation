@@ -66,6 +66,16 @@ Ensure your Book API (Node.js or other) is running at `http://localhost:3000`.
 pytest
 ```
 
+### 4. Generate Allure Report
+To view a live Allure report:
+```bash
+allure serve test-results/allure-results
+```
+To generate a static HTML Allure report:
+```bash
+allure generate test-results/allure-results --clean -o test-results/allure-report
+```
+
 ### 4. Run Tests in Parallel
 ```bash
 pytest -n auto  --dist loadfile # or -n 4 for 4 workers
@@ -106,3 +116,10 @@ class TestCreateBook(BaseTest):
 - **Parallel test issues**: Make sure test data is unique per worker or run tests serially.
 - **HTML report not generated**: Ensure `pytest-html` is installed and use the `--html` option.
 ---
+## CI/CD & Automation
+
+This project uses GitHub Actions for:
+- **Code Analysis**: Automated linting and static analysis on every push/PR.
+- **Test Execution**: Runs all tests and generates reports for every push/PR.
+
+See the badges at the top of this README for the latest status of these workflows.

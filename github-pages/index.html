@@ -42,6 +42,9 @@
                     <li><strong>Rich Reporting</strong> with HTML and Allure integration</li>
                     <li><strong>Comprehensive Logging</strong> for all requests, responses, and assertions</li>
                 </ul>
+                 <ul>
+                     <li><strong>CI/CD Workflows:</strong> Automated <code> Code Analysis</code> and <code>Test Execution</code> via GitHub Actions</li>
+                 </ul>
             </div>
             
             <div class="card">
@@ -52,6 +55,7 @@
                     <li>Run all tests:<br><code>pytest</code></li>
                     <li>Run tests in parallel:<br><code>pytest -n auto --dist loadfile</code></li>
                     <li>Generate Allure report:<br><code>allure serve test-results/allure-results</code></li>
+                    <li>To generate a static Allure HTML report:<br><code>allure generate test-results/allure-results --clean -o test-results/allure-report</code></li>
                 </ol>
             </div>
             
