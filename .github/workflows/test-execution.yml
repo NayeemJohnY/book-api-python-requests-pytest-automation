@@ -57,19 +57,18 @@ jobs:
         if: always()
         run: npm run stop-pm2 --prefix books-nodejs-app
 
-      - name: Upload Test Results
-        if: success() || failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: test-results
-
       - name: Generate Allure Report
         if: success() || failure()
         uses: NayeemJohnY/actions/allure-report-with-history@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Upload Test Results
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results
       - name: Prepare GitHub Pages Content
         if: success() || failure()
         uses: NayeemJohnY/actions/prepare-github-pages@main
