@@ -98,6 +98,14 @@
                 <p><strong>Parallel execution with markers:</strong></p>
                 <code>pytest -m smoke -n auto --dist loadfile</code><br>
             </div>
+
+            <div class="card">
+                <h2><i class="fas fa-link"></i> Test Case Mapping & Result Collection</h2>
+                <ul>
+                    <li><strong>Test Case Mapping:</strong> Each test function is mapped to a unique test case ID using <code>test-plan-suite.json</code> for traceability and reporting.</li>
+                    <li><strong>Result Collection:</strong> Test results are collected for each test case, including outcome, duration (ms), and iteration details. Results are aggregated and written to <code>test-results/test-results-report.json</code> after each run, supporting both serial and parallel execution.</li>
+                </ul>
+            </div>
             </div>
         </div>
         

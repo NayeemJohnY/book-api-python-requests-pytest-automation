@@ -179,6 +179,11 @@ def test_should_create_book_successfully(self):
 
 This marker system enables flexible test execution strategies, from quick smoke tests during development to comprehensive regression testing in CI/CD pipelines.
 
+## Test Case Mapping & Result Collection
+
+- **Test Case Mapping**: Each test function is mapped to a unique test case ID using the `test-plan-suite.json` file. This enables traceability between automated tests and business requirements.
+- **Result Collection**: During test execution, results are collected for each test case, including outcome, duration (in milliseconds), and iteration details (for parameterized tests). Results are aggregated and written to `test-results/test-results-report.json` after the test run, supporting both serial and parallel execution (pytest-xdist).
+
 ## Troubleshooting
 - **Connection errors**: Ensure the Book API server is running at the correct URL.
 - **Parallel test issues**: Make sure test data is unique per worker or run tests serially.
