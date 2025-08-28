@@ -22,6 +22,11 @@ on:
         description: Run Tests in Parallel
         default: false
 
+      publish_report:
+        description: Publish Allure Report, Javadoc and Azure Devops Test Results
+        type: boolean
+        default: true
+
 env: 
   APP_MAX_REQUESTS: ${{inputs.APP_MAX_REQUESTS}}
   
@@ -111,11 +116,11 @@ jobs:
           azure-token: ${{ secrets.AZURE_TOKEN }}
 
       - name: Prepare GitHub Pages Content
-        if: success() || failure()
+        if: ${{ (success() || failure()) && inputs.publish_report }}
         uses: NayeemJohnY/actions/prepare-github-pages@main
         with:
          reports-dir: test-results/allure-report
     
       - name: Deploy GitHub Pages
-        if: success() || failure()
+        if: ${{ (success() || failure()) && inputs.publish_report }}
         uses: NayeemJohnY/actions/deploy-github-pages-site@main
