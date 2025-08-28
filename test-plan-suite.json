@@ -1,93 +1,93 @@
 {
     "testPlanName": "Automation Test Plan",
-    "testSuiteName": "Book API Automation Test Suite",
+    "testSuiteName": "Book API Python Requests Automation Test Suite",
     "testCases": {
         "test_should_create_book_when_title_and_author_are_valid": {
-            "testCaseId": "TC-001"
+            "testCaseId": "54"
         },
         "test_should_reject_duplicate_book_creation": {
-            "testCaseId": "TC-002"
+            "testCaseId": "55"
         },
         "test_should_create_book_when_title_is_different_for_same_author": {
-            "testCaseId": "TC-003"
+            "testCaseId": "56"
         },
         "test_should_create_book_when_author_is_different_for_same_book": {
-            "testCaseId": "TC-004"
+            "testCaseId": "57"
         },
         "test_should_return_401_when_no_auth_token_provided": {
-            "testCaseId": "TC-005"
+            "testCaseId": "58"
         },
         "test_should_reject_book_with_missing_fields": {
-            "testCaseId": "TC-006"
+            "testCaseId": "59"
         },
         "test_should_reject_book_creation_with_client_provided_id": {
-            "testCaseId": "TC-007"
+            "testCaseId": "60"
         },
         "test_should_return_401_when_no_auth_token_provided_on_delete": {
-            "testCaseId": "TC-008"
+            "testCaseId": "61"
         },
         "test_should_return_403_when_user_auth_token_is_provided_on_delete": {
-            "testCaseId": "TC-009"
+            "testCaseId": "62"
         },
         "test_should_delete_book_when_book_id_is_valid": {
-            "testCaseId": "TC-010"
+            "testCaseId": "63"
         },
         "test_should_return_404_when_book_is_already_deleted_or_not_exists": {
-            "testCaseId": "TC-011"
+            "testCaseId": "64"
         },
         "test_should_return_books_for_default_page1": {
-            "testCaseId": "TC-012"
+            "testCaseId": "65"
         },
         "test_should_return_books_by_page_number": {
-            "testCaseId": "TC-013"
+            "testCaseId": "66"
         },
         "test_pagination_cases": {
-            "testCaseId": "TC-014"
+            "testCaseId": "67"
         },
         "test_should_return_books_excluding_last_limit_on_negative_limit": {
-            "testCaseId": "TC-015"
+            "testCaseId": "68"
         },
         "test_should_return_single_book_by_id": {
-            "testCaseId": "TC-016"
+            "testCaseId": "69"
         },
         "test_should_not_return_book_when_book_id_is_invalid_string": {
-            "testCaseId": "TC-017"
+            "testCaseId": "70"
         },
         "test_should_not_return_book_when_book_id_not_exists": {
-            "testCaseId": "TC-018"
+            "testCaseId": "71"
         },
         "test_should_return_all_books_when_book_id_is_empty": {
-            "testCaseId": "TC-019"
+            "testCaseId": "72"
         },
         "test_should_return_books_contains_author": {
-            "testCaseId": "TC-020"
+            "testCaseId": "73"
         },
         "test_should_return_books_contains_title": {
-            "testCaseId": "TC-021"
+            "testCaseId": "74"
         },
         "test_should_return_books_contains_title_and_author": {
-            "testCaseId": "TC-022"
+            "testCaseId": "75"
         },
         "test_should_return_single_book_with_title_and_author": {
-            "testCaseId": "TC-023"
+            "testCaseId": "76"
         },
         "test_search_error_cases": {
-            "testCaseId": "TC-024"
+            "testCaseId": "77"
         },
         "test_should_update_book_author_or_title": {
-            "testCaseId": "TC-025"
+            "testCaseId": "78"
         },
         "test_should_return_401_when_no_auth_is_provided_on_update_book": {
-            "testCaseId": "TC-026"
+            "testCaseId": "79"
         },
         "test_should_return_404_when_book_with_id_is_not_exists": {
-            "testCaseId": "TC-027"
+            "testCaseId": "80"
         },
         "test_should_return_400_when_different_book_id_is_given_in_body": {
-            "testCaseId": "TC-028"
+            "testCaseId": "81"
         },
         "test_should_update_book_when_same_book_id_is_given_in_body": {
-            "testCaseId": "TC-029"
+            "testCaseId": "82"
         }
     }
 }

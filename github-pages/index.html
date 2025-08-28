@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -7,46 +8,57 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta property="og:title" content="Book API Testing Framework">
-    <meta property="og:description" content="Comprehensive API Testing Framework for Book system with Python, pytest, and requests.">
+    <meta property="og:description"
+        content="Comprehensive API Testing Framework for Book system with Python, pytest, and requests.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <a href="https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation" class="github-corner" target="_blank" title="View on GitHub">
+    <a href="https://github.com/NayeemJohnY/book-api-python-requests-pytest-automation" class="github-corner"
+        target="_blank" title="View on GitHub">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Repository">
     </a>
-    
+
     <div class="main-container">
         <header>
             <h1><i class="fas fa-book"></i> Book API Testing Framework</h1>
-            <p class="subtitle">A robust, maintainable API test automation framework built with Python, pytest, and requests</p>
+            <p class="subtitle">A robust, maintainable API test automation framework built with Python, pytest, and
+                requests</p>
         </header>
-        
+
         <nav class="quick-links">
             <a href="./allure-report/index.html" class="nav-link">
                 <i class="fa-solid fa-chart-line"></i>
                 View Allure Report
             </a>
+            <a href="./test-results-report.json" class="nav-link">
+                <i class="fa-solid fa-file-code"></i>
+                Test Results JSON
+            </a>
         </nav>
-        
+
         <div class="content-grid">
             <div class="card">
                 <h2><i class="fas fa-star"></i> Key Features</h2>
                 <ul>
                     <li><strong>Custom APIClient</strong> with built-in retry logic and comprehensive logging</li>
-                    <li><strong>Reusable Validators</strong> for status codes, error messages, and response validation</li>
+                    <li><strong>Reusable Validators</strong> for status codes, error messages, and response validation
+                    </li>
                     <li><strong>DRY Architecture</strong> using pytest fixtures and base classes</li>
                     <li><strong>Parallel Execution</strong> with pytest-xdist and worker-safe test data</li>
                     <li><strong>Rich Reporting</strong> with HTML and Allure integration</li>
                     <li><strong>Comprehensive Logging</strong> for all requests, responses, and assertions</li>
                 </ul>
-                 <ul>
-                     <li><strong>CI/CD Workflows:</strong> Automated <code> Code Analysis</code> and <code>Test Execution</code> via GitHub Actions</li>
-                 </ul>
+                <ul>
+                    <li><strong>CI/CD Workflows:</strong> Automated <code> Code Analysis</code> and
+                        <code>Test Execution</code> via GitHub Actions
+                    </li>
+                </ul>
             </div>
-            
+
             <div class="card">
                 <h2><i class="fas fa-rocket"></i> Quick Start</h2>
                 <ol>
@@ -56,10 +68,12 @@
                     <li>Run tests in parallel:<br><code>pytest -n auto --dist loadfile</code></li>
                     <li>Run smoke tests quickly:<br><code>pytest -m smoke -n auto --dist loadfile</code></li>
                     <li>Generate Allure report:<br><code>allure serve test-results/allure-results</code></li>
-                    <li>To generate a static Allure HTML report:<br><code>allure generate test-results/allure-results --clean -o test-results/allure-report</code></li>
+                    <li>To generate a static Allure HTML
+                        report:<br><code>allure generate test-results/allure-results --clean -o test-results/allure-report</code>
+                    </li>
                 </ol>
             </div>
-            
+
             <div class="card">
                 <h2><i class="fas fa-cogs"></i> Best Practices</h2>
                 <ul>
@@ -70,7 +84,7 @@
                     <li><strong>Parallel Safety:</strong> Unique test data per worker prevents collisions</li>
                 </ul>
             </div>
-            
+
             <div class="card">
                 <h2><i class="fas fa-tools"></i> Tech Stack</h2>
                 <ul>
@@ -102,24 +116,90 @@
             <div class="card">
                 <h2><i class="fas fa-link"></i> Test Case Mapping & Result Collection</h2>
                 <ul>
-                    <li><strong>Test Case Mapping:</strong> Each test function is mapped to a unique test case ID using <code>test-plan-suite.json</code> for traceability and reporting.</li>
-                    <li><strong>Result Collection:</strong> Test results are collected for each test case, including outcome, duration (ms), and iteration details. Results are aggregated and written to <code>test-results/test-results-report.json</code> after each run, supporting both serial and parallel execution.</li>
+                    <li><strong>Test Case Mapping:</strong> Each test function is mapped to a unique test case ID using
+                        <code>test-plan-suite.json</code> for traceability and reporting.
+                    </li>
+                    <li><strong>Result Collection:</strong> Test results are collected for each test case, including
+                        outcome, duration (ms), and iteration details. Results are aggregated and written to
+                        <code>test-results/test-results-report.json</code> after each run, supporting both serial and
+                        parallel execution.
+                    </li>
                 </ul>
             </div>
+
+            <div class="card">
+                <h2><i class="fa-brands fa-github"></i> CI/CD & GitHub Actions</h2>
+                <ul>
+                    <li><strong>Code Analysis:</strong> Automated linting and static analysis on every push and pull
+                        request.</li>
+                    <li><strong>Test Execution:</strong> Runs all tests and generates reports for every push and pull
+                        request, including parallel execution and publishing Allure/HTML reports.</li>
+                </ul>
             </div>
         </div>
-        
-        <footer class="footer">
-            <div>
-                <a href="https://www.linkedin.com/in/nayeemjohny/" target="_blank" class="linkedin-link">
-                    <i class="fa-brands fa-linkedin"></i>Connect with me on LinkedIn
-                </a>
+        <div class="ado-images-container">
+            <h2>Azure DevOps Test Plan Integration</h2>
+            <p>Below are sample screenshots showing how test results are posted and visualized in Azure DevOps Test
+                Plans:</p>
+            <div class="ado-images-grid">
+                <figure>
+                    <img src="images/ado-progress-report.png" alt="ADO Progress Report" class="ado-img"
+                        onclick="enlargeImage(this)">
+                    <figcaption>Progress Report</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/ado-run-summary.png" alt="ADO Run Summary" class="ado-img"
+                        onclick="enlargeImage(this)">
+                    <figcaption>Run Summary</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/ado-test-result-summary.png" alt="ADO Test Result Summary" class="ado-img"
+                        onclick="enlargeImage(this)">
+                    <figcaption>Test Result Summary</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/ado-test-results.png" alt="ADO Test Results" class="ado-img"
+                        onclick="enlargeImage(this)">
+                    <figcaption>Test Results in Azure DevOps</figcaption>
+                </figure>
             </div>
-            <div class="copilot-credit">
-                <i class="fa-solid fa-robot"></i>
-                Thanks to <span class="copilot-highlight">GitHub Copilot</span> for assisting with documentation
+            <div id="adoModal" class="ado-modal" onclick="closeModal(event)">
+                <div class="ado-modal-content">
+                    <div class="ado-modal-image-container">
+                        <img id="adoModalImg" src="" alt="Enlarged Azure DevOps Screenshot">
+                    </div>
+                    <button class="ado-modal-close" onclick="closeModal(event)">Close</button>
+                </div>
             </div>
-        </footer>
+        </div>
+        <script>
+            function enlargeImage(img) {
+                var modal = document.getElementById('adoModal');
+                var modalImg = document.getElementById('adoModalImg');
+                modalImg.src = img.src;
+                modal.classList.add('active');
+            }
+            function closeModal(event) {
+                var modal = document.getElementById('adoModal');
+                if (event.target.classList.contains('ado-modal') || event.target.classList.contains('ado-modal-close')) {
+                    modal.classList.remove('active');
+                }
+            }
+        </script>
+    </div>
+
+    <footer class="footer">
+        <div>
+            <a href="https://www.linkedin.com/in/nayeemjohny/" target="_blank" class="linkedin-link">
+                <i class="fa-brands fa-linkedin"></i>Connect with me on LinkedIn
+            </a>
+        </div>
+        <div class="copilot-credit">
+            <i class="fa-solid fa-robot"></i>
+            Thanks to <span class="copilot-highlight">GitHub Copilot</span> for assisting with documentation
+        </div>
+    </footer>
     </div>
 </body>
+
 </html>

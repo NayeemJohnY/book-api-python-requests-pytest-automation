@@ -17,7 +17,7 @@ class TestDeleteBook(BaseTest):
     USER_HEADERS = {"authorization": "Bearer user-token"}
 
     @pytest.fixture(scope="class", autouse=True)
-    def test_create_book_before_delete_book_test(self, init_api_client):
+    def create_book_before_delete_book_test(self, init_api_client):
         """Create a book to be used for delete tests."""
         book = {
             "title": "Delete API Test Book Title",

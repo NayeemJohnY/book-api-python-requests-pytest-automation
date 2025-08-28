@@ -189,10 +189,35 @@ This marker system enables flexible test execution strategies, from quick smoke 
 - **Parallel test issues**: Make sure test data is unique per worker or run tests serially.
 - **HTML report not generated**: Ensure `pytest-html` is installed and use the `--html` option.
 ---
-## CI/CD & Automation
+## CI/CD & GitHub Actions
 
-This project uses GitHub Actions for:
-- **Code Analysis**: Automated linting and static analysis on every push/PR.
-- **Test Execution**: Runs all tests and generates reports for every push/PR.
+This project uses GitHub Actions for automated workflows:
+- **Code Analysis**: Runs linting and static analysis on every push and pull request.
+- **Test Execution**: Runs all tests and generates reports for every push and pull request, including parallel execution and publishing Allure/HTML reports.
+- **Badges**: See the top of this README for live status of these workflows.
 
-See the badges at the top of this README for the latest status of these workflows.
+Workflow files are located in `.github/workflows/`.
+
+## Running the Test Execution Workflow (GitHub Actions)
+
+### How to Trigger
+- The workflow runs automatically on every push and pull request to the repository.
+- You can also trigger it manually from the GitHub Actions tab by selecting the `Test Execution & Publish Report` workflow and clicking 'Run workflow'.
+
+### What the Workflow Does
+- Installs Python and all dependencies from `requirements.txt`.
+- Runs all tests using pytest (including parallel execution with xdist).
+- Publishes test results as HTML and Allure reports (if configured).
+- Uploads the reports as workflow artifacts for download and review.
+- Updates status badges at the top of the README to reflect the latest run.
+
+### New: Post Results to Azure
+- After test execution, the workflow now includes a step to post the test results to Azure (e.g., Azure DevOps, Azure Storage, or a custom API endpoint).
+- This enables centralized reporting, dashboard integration, or further automation in your Azure environment.
+- The step uses secure credentials and API endpoints configured in your repository secrets.
+- You can customize the target Azure service and payload format as needed for your organization.
+
+### Viewing Results
+- Go to the 'Actions' tab in your GitHub repository.
+- Select the latest run of `Test Execution & Publish Report`.
+- Download the HTML/Allure report artifacts for detailed results.

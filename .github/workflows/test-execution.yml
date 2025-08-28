@@ -94,6 +94,15 @@ jobs:
           path: test-results
           retention-days: 3
 
+      - name: Post Test Results to Azure DevOps
+        if: ${{ (success() || failure()) && inputs.publish_report }}
+        uses: NayeemJohnY/actions/post-test-results-to-azure-devops@main
+        with:
+          test-results-json: test-results/test-results-report.json
+          org-url: ${{ vars.AZURE_ORG_URL }}
+          project: ${{ vars.AZURE_PROJECT }}
+          azure-token: ${{ secrets.AZURE_TOKEN }}
+
       - name: Prepare GitHub Pages Content
         if: success() || failure()
         uses: NayeemJohnY/actions/prepare-github-pages@main
