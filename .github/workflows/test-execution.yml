@@ -2,11 +2,6 @@ name: Test Execution & Publish Report
 on:
   workflow_dispatch:
     inputs:
-      parallel:
-        type: boolean
-        description: Run Tests in Parallel
-        default: false
-
       test_name:
         description: Test File / Test Class / Test function Name
         required: false
@@ -17,7 +12,19 @@ on:
         required: false
         type: string
 
+      APP_MAX_REQUESTS:
+        description: Max number of Requests to the app / minute
+        type: number
+        required: false
 
+      parallel:
+        type: boolean
+        description: Run Tests in Parallel
+        default: false
+
+env: 
+  APP_MAX_REQUESTS: ${{inputs.APP_MAX_REQUESTS}}
+  
 permissions:
   id-token: write
   contents: read
