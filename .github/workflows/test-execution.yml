@@ -119,7 +119,7 @@ jobs:
         if: ${{ (success() || failure()) && inputs.publish_report }}
         uses: NayeemJohnY/actions/prepare-github-pages@main
         with:
-         reports-dir: test-results/allure-report
+         allure-report-dir: test-results/allure-report
     
       - name: Deploy GitHub Pages
         if: ${{ (success() || failure()) && inputs.publish_report }}
