@@ -120,6 +120,7 @@ jobs:
         uses: NayeemJohnY/actions/prepare-github-pages@main
         with:
          allure-report-dir: test-results/allure-report
+         test-results-json: test-results/test-results-report.json
     
       - name: Deploy GitHub Pages
         if: ${{ (success() || failure()) && inputs.publish_report }}
