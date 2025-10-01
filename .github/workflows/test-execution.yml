@@ -112,7 +112,7 @@ jobs:
           retention-days: 3
 
       - name: Post Test Results to Azure DevOps
-        if: ${{ (success() || failure()) && env.PUBLISH_REPORT }}
+        if: ${{ (success() || failure()) && env.PUBLISH_REPORT == 'true' }}
         uses: NayeemJohnY/actions/post-test-results-to-azure-devops@main
         with:
           test-results-json: test-results/test-results-report.json
@@ -121,12 +121,12 @@ jobs:
           azure-token: ${{ secrets.AZURE_TOKEN }}
 
       - name: Prepare GitHub Pages Content
-        if: ${{ (success() || failure()) && env.PUBLISH_REPORT }}
+        if: ${{ (success() || failure()) && env.PUBLISH_REPORT == 'true' }}
         uses: NayeemJohnY/actions/prepare-github-pages@main
         with:
          allure-report-dir: test-results/allure-report
          test-results-json: test-results/test-results-report.json
     
       - name: Deploy GitHub Pages
-        if: ${{ (success() || failure()) && env.PUBLISH_REPORT }}
+        if: ${{ (success() || failure()) && env.PUBLISH_REPORT == 'true' }}
         uses: NayeemJohnY/actions/deploy-github-pages-site@main
