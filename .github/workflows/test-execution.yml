@@ -32,6 +32,8 @@ on:
 
 env: 
   APP_MAX_REQUESTS: ${{inputs.APP_MAX_REQUESTS}}
+  PARALLEL: ${{ github.event_name == 'schedule' && 'true' || inputs.parallel }}
+  PUBLISH_REPORT: ${{ github.event_name == 'schedule' && 'true' || inputs.publish_report }}
   
 permissions:
   id-token: write
@@ -76,7 +78,7 @@ jobs:
         run: |
           EXTRA_PARAMS=""
       
-          if ${{ inputs.parallel }} ; then
+          if [ "$PARALLEL" = "true" ]; then
             EXTRA_PARAMS+=" -n auto --dist loadfile";
           fi
 
@@ -110,7 +112,7 @@ jobs:
           retention-days: 3
 
       - name: Post Test Results to Azure DevOps
-        if: ${{ (success() || failure()) && inputs.publish_report }}
+        if: ${{ (success() || failure()) && env.PUBLISH_REPORT }}
         uses: NayeemJohnY/actions/post-test-results-to-azure-devops@main
         with:
           test-results-json: test-results/test-results-report.json
@@ -119,12 +121,12 @@ jobs:
           azure-token: ${{ secrets.AZURE_TOKEN }}
 
       - name: Prepare GitHub Pages Content
-        if: ${{ (success() || failure()) && inputs.publish_report }}
+        if: ${{ (success() || failure()) && env.PUBLISH_REPORT }}
         uses: NayeemJohnY/actions/prepare-github-pages@main
         with:
          allure-report-dir: test-results/allure-report
          test-results-json: test-results/test-results-report.json
     
       - name: Deploy GitHub Pages
-        if: ${{ (success() || failure()) && inputs.publish_report }}
+        if: ${{ (success() || failure()) && env.PUBLISH_REPORT }}
         uses: NayeemJohnY/actions/deploy-github-pages-site@main
